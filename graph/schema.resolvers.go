@@ -93,6 +93,6 @@ type queryResolver struct{ *Resolver }
 //  - When renaming or deleting a resolver the old code will be put in here. You can safely delete
 //    it when you're done.
 //  - You have helper methods in this file. Move them out to keep these resolver files clean.
-var CLIENT_TOKEN = "BQDgWnrPNf_ybG6HswReLuEsBqLQETR0-R0-Rn0mQauyi2O3MgeEwjNGuRKECTVHx4SvfqwCB9HJDXOgp0E"
+var CLIENT_TOKEN = "BQDbh3SBfAnNrx-9ch1lF0H2i2YsfJ97z6Q3OxoBBAJHLTo1gat2paiLzjg_bto0CLQ8VD23RJh0WdLKF30"
 
 type mutationResolver struct{ *Resolver }
