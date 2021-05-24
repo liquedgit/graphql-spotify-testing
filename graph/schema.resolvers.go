@@ -6,19 +6,20 @@ package graph
 import (
 	"context"
 	"encoding/json"
+	"github.com/abenbyy/spotify-graphql/auth"
+	"github.com/abenbyy/spotify-graphql/graph/generated"
+	"github.com/abenbyy/spotify-graphql/graph/model"
 	"io/ioutil"
 	"log"
 	"net/http"
 	url2 "net/url"
-
-	"github.com/abenbyy/spotify-graphql/graph/generated"
-	"github.com/abenbyy/spotify-graphql/graph/model"
 )
 
 func (r *queryResolver) Artist(ctx context.Context, name string) (*model.Artist, error) {
+	auth.ValidateToken()
 	url := "https://api.spotify.com/v1/search?q=" + url2.QueryEscape(name) + "&type=artist&limit=1&offset=0"
 
-	bearer := "Bearer " + CLIENT_TOKEN
+	bearer := "Bearer " + auth.ACCESS_TOKEN
 
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Add("Authorization", bearer)
@@ -93,6 +94,7 @@ type queryResolver struct{ *Resolver }
 //  - When renaming or deleting a resolver the old code will be put in here. You can safely delete
 //    it when you're done.
 //  - You have helper methods in this file. Move them out to keep these resolver files clean.
-var CLIENT_TOKEN = "BQDbh3SBfAnNrx-9ch1lF0H2i2YsfJ97z6Q3OxoBBAJHLTo1gat2paiLzjg_bto0CLQ8VD23RJh0WdLKF30"
+
+
 
 type mutationResolver struct{ *Resolver }
