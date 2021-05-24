@@ -3,10 +3,12 @@ package auth
 import (
 	"encoding/base64"
 	"encoding/json"
+	"github.com/joho/godotenv"
 	"io/ioutil"
 	"log"
 	"net/http"
 	url2 "net/url"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -14,8 +16,19 @@ import (
 var ACCESS_TOKEN = ""
 var LAST_REFRESH = time.Now()
 var REFRESH_RATE = -3000.0
-var CLIENT_ID = "a00eef974890430c94e90dfda54fab28"
-var CLIENT_SECRET = "8d170068cd6d436db439f785b7bcdac7"
+var CLIENT_ID = ""
+var CLIENT_SECRET = ""
+
+func init() {
+
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	CLIENT_ID = os.Getenv("CLIENT_ID")
+	CLIENT_SECRET = os.Getenv("CLIENT_SECRET")
+}
 
 func ValidateToken(){
 	if LAST_REFRESH.Sub(time.Now()).Minutes() < REFRESH_RATE || ACCESS_TOKEN == "" {
