@@ -3,9 +3,10 @@
 package model
 
 type Album struct {
-	ID    string `json:"id"`
-	Name  string `json:"name"`
-	Image string `json:"image"`
+	ID     string   `json:"id"`
+	Name   string   `json:"name"`
+	Image  string   `json:"image"`
+	Tracks []*Track `json:"tracks"`
 }
 
 type Artist struct {
@@ -13,4 +14,10 @@ type Artist struct {
 	Name   string   `json:"name"`
 	Image  string   `json:"image"`
 	Albums []*Album `json:"albums"`
+}
+
+type Track struct {
+	ID         string `json:"id"`
+	Name       string `json:"name"`
+	PreviewURL string `json:"preview_url"`
 }

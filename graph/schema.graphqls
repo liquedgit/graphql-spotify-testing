@@ -2,10 +2,17 @@
 #
 # https://gqlgen.com/getting-started/
 
+type Track{
+  id: ID!
+  name: String!
+  preview_url: String!
+}
+
 type Album{
   id: ID!
   name: String!
   image: String!
+  tracks: [Track!]!
 }
 
 type Artist {
@@ -17,6 +24,8 @@ type Artist {
 
 type Query {
   artist(name: String!): Artist!
+  album(id: String!): Album!
+  track(id: String!): Track!
 }
 
 
