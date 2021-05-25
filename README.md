@@ -4,6 +4,9 @@ A Graphql Wrapper for Spotify Web API
 ## Deployed Example on:
 https://spotify-graphql-wrapper.herokuapp.com/
 
+## Requirements:
+- Go 1.15
+
 ## How to Create Your own:
 - Clone this repository
 - Go to [Spotify Developer's Dashboard](https://developer.spotify.com/dashboard/applications) and create a new app
@@ -19,7 +22,7 @@ https://spotify-graphql-wrapper.herokuapp.com/
 - [x] Search Artist Albums
 
 ### Album
-- [ ] Get Album Tracks
+- [x] Get Album Tracks
 
 ### Tracks
-- [ ] Get Track Content
+- [x] Get Track Content
