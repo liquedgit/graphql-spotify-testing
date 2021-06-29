@@ -3,7 +3,6 @@ package auth
 import (
 	"encoding/base64"
 	"encoding/json"
-	"github.com/joho/godotenv"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -21,11 +20,11 @@ var CLIENT_SECRET = ""
 
 func init() {
 
-	err := godotenv.Load(".env")
-
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	//err := godotenv.Load(".env")
+	//
+	//if err != nil {
+	//	log.Fatal("Error loading .env file")
+	//}
 	CLIENT_ID = os.Getenv("CLIENT_ID")
 	CLIENT_SECRET = os.Getenv("CLIENT_SECRET")
 }
