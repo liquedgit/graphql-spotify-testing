@@ -16,6 +16,11 @@ import (
 	"github.com/abenbyy/spotify-graphql/graph/model"
 )
 
+
+func ParseString(i interface{}) (string){
+	if i != nil {return i.(string)}
+	return ""
+}
 func (r *queryResolver) Artist(ctx context.Context, name string) (*model.Artist, error) {
 	auth.ValidateToken()
 	url := "https://api.spotify.com/v1/search?q=" + url2.QueryEscape(name) + "&type=artist&limit=1&offset=0"
@@ -154,7 +159,7 @@ func GetAlbumTracks(id string) ([]*model.Track){
 		tracks = append(tracks, &model.Track{
 			ID:         track["id"].(string),
 			Name:       track["name"].(string),
-			PreviewURL: track["preview_url"].(string),
+			PreviewURL: ParseString(track["preview_url"]),
 		})
 	}
 
@@ -186,7 +191,7 @@ func GetTrack(id string) *model.Track{
 	return &model.Track{
 		ID:         result["id"].(string),
 		Name:       result["name"].(string),
-		PreviewURL: result["preview_url"].(string),
+		PreviewURL: ParseString(result["preview_url"]),
 	}
 }
 
