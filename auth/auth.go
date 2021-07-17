@@ -27,7 +27,7 @@ func init() {
 }
 
 func ValidateToken(){
-	if LAST_REFRESH.Sub(time.Now()).Minutes() < REFRESH_RATE || ACCESS_TOKEN == "" {
+	//if LAST_REFRESH.Sub(time.Now()).Minutes() < REFRESH_RATE || ACCESS_TOKEN == "" {
 		url := "https://accounts.spotify.com/api/token"
 
 		data := url2.Values{}
@@ -58,5 +58,5 @@ func ValidateToken(){
 		json.Unmarshal(body, &res)
 
 		ACCESS_TOKEN = res["access_token"].(string)
-	}
+	//}
 }
