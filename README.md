@@ -2,7 +2,7 @@
 A Graphql Wrapper for Spotify Web API
 
 ## Deployed Example on:
-https://spotify-graphql-wrapper.herokuapp.com/
+https://spotify-graphql.up.railway.app
 
 ## Requirements:
 - Go 1.15
