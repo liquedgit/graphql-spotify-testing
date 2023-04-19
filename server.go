@@ -12,7 +12,8 @@ import (
 )
 
 const defaultPort = "8080"
-func CorsMiddleware(next http.Handler) http.Handler{
+
+func CorsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "POST")
@@ -22,7 +23,6 @@ func CorsMiddleware(next http.Handler) http.Handler{
 	})
 
 }
-
 
 func main() {
 	port := os.Getenv("PORT")
@@ -36,5 +36,5 @@ func main() {
 	http.Handle("/query", CorsMiddleware(srv))
 
 	log.Printf("connect to http://127.0.0.1:%s/ for GraphQL playground", port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, nil))
 }
