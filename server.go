@@ -36,5 +36,5 @@ func main() {
 	http.Handle("/query", CorsMiddleware(srv))
 
 	log.Printf("connect to http://127.0.0.1:%s/ for GraphQL playground", port)
-	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
